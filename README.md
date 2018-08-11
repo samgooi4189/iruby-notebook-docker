@@ -5,6 +5,7 @@ This is iruby notebook with docker, so you can start sciruby without much config
 * docker
 
 ## How to run
+* docker build -t rubytues/iruby .
 * docker run -p 8888:8888 -v $(pwd)/workspace:/home/sciruby/workspace -it rubytues/iruby /bin/bash
 * jupyter notebook --NotebookApp.token='' --ip=0.0.0.0 --port=8888 --no-browser
 
