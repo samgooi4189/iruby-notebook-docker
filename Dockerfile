@@ -21,10 +21,11 @@ RUN pip3 install jupyter
 RUN mkdir $HOME/workspace
 
 # Install ruby and gems
-RUN gpg --keyserver hkp://pgp.mit.edu --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+#RUN gpg --keyserver hkp://pgp.mit.edu --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+RUN curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 RUN (curl -sSL https://get.rvm.io | bash)
 RUN /bin/bash -l -c "source /home/sciruby/.rvm/scripts/rvm && rvm install 2.5"
-RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
+RUN /bin/bash -l -c "gem install bundler"
 RUN sudo apt-get install libtool libffi-dev make libzmq3-dev libczmq-dev -y
 RUN echo "export PATH=\"$PATH:$HOME/.local/bin\"" >> $HOME/.bashrc
 RUN echo "[[ -s \"$HOME/.rvm/scripts/rvm\" ]] && . \"$HOME/.rvm/scripts/rvm\"" >> $HOME/.bashrc
